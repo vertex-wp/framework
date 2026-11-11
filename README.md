@@ -126,4 +126,4 @@ Run the PHPUnit suite with:
 php phpunit.phar --configuration phpunit.xml
 ```
 
-The GitHub Actions test workflow runs the supported PHP and PHPUnit matrix on pull requests targeting `main` and pushes to `main`. The coverage job reports line and branch coverage in the workflow summary. The `COVERAGE.md` file is regenerated automatically only after a pull request has been merged into `main`.
+The GitHub Actions test workflow runs the supported PHP and PHPUnit matrix on pull requests targeting `main` and pushes to `main`. The coverage job reports line and branch coverage in the workflow summary. The `COVERAGE.md` file is a separate report and is not currently updated by CI.
