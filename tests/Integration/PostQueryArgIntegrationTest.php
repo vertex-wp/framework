@@ -20,7 +20,7 @@ final class PostQueryArgIntegrationTest extends WP_UnitTestCase
     {
         $term = wp_insert_term('Vertex integration', 'category');
 
-        self::assertNotWPError($term);
+        self::assertNotInstanceOf(WP_Error::class, $term);
 
         $matchingPostId = self::factory()->post->create([
             'post_type' => 'post',
