@@ -1,4 +1,4 @@
-name: Vertex Framework Unit Tests
+name: Vertex Unit Tests
 
 on:
   pull_request:
