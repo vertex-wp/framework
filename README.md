@@ -1,6 +1,6 @@
 # Vertex
 
-Vertex is a lightweight PHP framework for WordPress plugins and themes. It provides a shared application entry point, PSR-4-style class loading and reusable query-argument builders.
+Vertex is a lightweight PHP framework for WordPress plugins and themes. It provides a minimal application registry, PSR-4-style class loading and reusable WordPress query-argument builders.
 
 ## Requirements
 
@@ -47,7 +47,7 @@ A product entry point can then register its application with the framework:
 ```php
 namespace ExamplePlugin;
 
-use Vertex\\App;
+use Vertex\App;
 
 App::getInstance()->registerPlugin(__DIR__);
 ```
@@ -58,16 +58,16 @@ All framework classes use the `Vertex` root namespace. Sub-namespaces mirror the
 
 | Namespace | Purpose |
 |---|---|
-| `Vertex\\App` | Application lifecycle and product registration |
-| `Vertex\\Utils` | General-purpose utilities |
-| `Vertex\\WordPress` | WordPress query argument builders |
+| `Vertex\App` | Application instance and product registration |
+| `Vertex\Utils` | General-purpose utilities |
+| `Vertex\WordPress` | WordPress query argument builders |
 
 Examples:
 
 ```php
-use Vertex\\Utils\\ArrayUtil;
-use Vertex\\Utils\\NumberUtil;
-use Vertex\\WordPress\\PostQueryArg;
+use Vertex\Utils\\ArrayUtil;
+use Vertex\Utils\\NumberUtil;
+use Vertex\WordPress\\PostQueryArg;
 
 $ids = ArrayUtil::normalizeUniqueStrings(['one', '', 'one', 'two']);
 $id = NumberUtil::absint('-42');
@@ -81,12 +81,12 @@ $query = PostQueryArg::make()
 
 $args = $query->toArray();
 
-$queryResult = new \\WP_Query($args);
+$queryResult = new \WP_Query($args);
 ```
 
 ## Query argument builders
 
-Classes in `Vertex\\WordPress` build argument arrays; they do not execute WordPress queries. Pass the returned array to the corresponding WordPress API.
+Classes in `Vertex\WordPress` build argument arrays; they do not execute WordPress queries. Pass the returned array to the corresponding WordPress API.
 
 Available builders:
 
@@ -104,7 +104,7 @@ Builders support constructor hydration through `make(array $queryArray)`, fluent
 
 ## Autoloading
 
-`VertexLoader` registers the `Vertex\\` namespace against `vertex/src/` and each product namespace against its `src/` directory. Framework class files must follow PSR-4-style namespace-to-directory mapping.
+`VertexLoader` registers the `Vertex\` namespace against `vertex/src/` and each product namespace against its `src/` directory. Framework class files must follow PSR-4-style namespace-to-directory mapping.
 
 The loader selects the highest registered framework version when multiple products load separate copies of Vertex in the same request.
 
