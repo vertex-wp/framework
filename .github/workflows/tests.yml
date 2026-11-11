@@ -46,7 +46,7 @@ jobs:
             phpunit: "13"
     steps:
       - name: Check out Vertex
-        uses: actions/checkout@v4
+        uses: actions/checkout@v7
 
       - name: Set up PHP
         uses: shivammathur/setup-php@eb7c497e18156a6bbabfef1d3a82760b9eda3962
@@ -67,7 +67,7 @@ jobs:
     if: always() && needs.tests.result == 'success'
     steps:
       - name: Check out Vertex
-        uses: actions/checkout@v4
+        uses: actions/checkout@v7
 
       - name: Set up PHP with Xdebug
         uses: shivammathur/setup-php@eb7c497e18156a6bbabfef1d3a82760b9eda3962
