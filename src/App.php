@@ -2,7 +2,7 @@
 
 declare(strict_types=1);
 
-namespace EphpicMan\Framework;
+namespace Vertex\Framework;
 
 final class App
 {

@@ -1,4 +1,4 @@
-name: EPM Unit Tests
+name: Vertex Framework Unit Tests
 
 on:
   pull_request:
@@ -13,7 +13,7 @@ permissions:
   contents: read
 
 concurrency:
-  group: epm-unit-tests-${{ github.event.pull_request.number || github.ref }}
+  group: vertex-framework-tests-${{ github.event.pull_request.number || github.ref }}
   cancel-in-progress: true
 
 jobs:
@@ -72,7 +72,7 @@ jobs:
         run: |
           mkdir -p "$RUNNER_TEMP/phpunit"
           cd "$RUNNER_TEMP/phpunit"
-          composer init --no-interaction --name=epm/coverage-tools
+          composer init --no-interaction --name=vertex/framework-coverage-tools
           composer require --no-interaction --no-progress phpunit/phpunit:13.4.5
           echo "$RUNNER_TEMP/phpunit/vendor/bin" >> "$GITHUB_PATH"
 

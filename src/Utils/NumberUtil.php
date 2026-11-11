@@ -1,6 +1,6 @@
 <?php
 declare(strict_types=1);
-namespace EphpicMan\Framework\Utils;
+namespace Vertex\Framework\Utils;
 
 final class NumberUtil
 {

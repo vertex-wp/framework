@@ -4,8 +4,8 @@ declare(strict_types=1);
 
 defined('ABSPATH') || exit;
 
-if (!class_exists('EphpicManLoader', false)) {
-    final class EphpicManLoader
+if (!class_exists('VertexLoader', false)) {
+    final class VertexLoader
     {
         /** @var array<string, array{version: string, path: string}> */
         private static array $availableFrameworkInstances = [];
@@ -77,7 +77,7 @@ if (!class_exists('EphpicManLoader', false)) {
 
             spl_autoload_register(
                 static function (string $class) use ($frameworkSourcePath): void {
-                    self::autoloadClass($class, ['EphpicMan\\Framework\\' => $frameworkSourcePath]);
+                    self::autoloadClass($class, ['Vertex\\Framework\\' => $frameworkSourcePath]);
                 }
             );
 
@@ -110,7 +110,7 @@ if (!class_exists('EphpicManLoader', false)) {
         }
     }
 
-    add_action('wp_loaded', static fn(): void => EphpicMan\Framework\App::getInstance()->run());
+    add_action('wp_loaded', static fn(): void => Vertex\Framework\App::getInstance()->run());
 }
 
 /*
@@ -121,7 +121,7 @@ if (!class_exists('EphpicManLoader', false)) {
  *
  * Example (in the main plugin file):
  *
- * EphpicManLoader::register(
+ * VertexLoader::register(
  *     __DIR__,
  *     'ExamplePlugin\\\\',
  *     '1.4.0',
