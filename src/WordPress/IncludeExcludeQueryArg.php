@@ -2,9 +2,9 @@
 
 declare(strict_types=1);
 
-namespace Vertex\Framework\WordPress;
+namespace Vertex\WordPress;
 
-use Vertex\Framework\Utils\ArrayUtil;
+use Vertex\Utils\ArrayUtil;
 
 \defined('ABSPATH') || exit;
 

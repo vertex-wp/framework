@@ -110,7 +110,7 @@ if (!class_exists('VertexLoader', false)) {
         }
     }
 
-    add_action('wp_loaded', static fn(): void => Vertex\Framework\App::getInstance()->run());
+    add_action('wp_loaded', static fn(): void => Vertex\App::getInstance()->run());
 }
 
 /*

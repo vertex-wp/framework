@@ -2,7 +2,7 @@
 
 declare(strict_types=1);
 
-namespace Vertex\Framework\Utils;
+namespace Vertex\Utils;
 
 final class ArrayUtil
 {

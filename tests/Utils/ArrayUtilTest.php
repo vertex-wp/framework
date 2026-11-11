@@ -2,7 +2,7 @@
 
 declare(strict_types=1);
 
-use Vertex\Framework\Utils\ArrayUtil;
+use Vertex\Utils\ArrayUtil;
 use PHPUnit\Framework\TestCase;
 
 final class ArrayUtilTest extends TestCase

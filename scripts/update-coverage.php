@@ -119,10 +119,10 @@ foreach ($sourceFiles as $relativePath) {
     $className = preg_replace('/\.php$/', '', $relativePath);
     $displayClassName = str_replace('/', '\\', $className);
     $encodedPath = str_replace('%2F', '/', rawurlencode($relativePath));
-    $sourceUrl = 'https://github.com/ephpicman/Framework/blob/main/src/' . $encodedPath;
+    $sourceUrl = 'https://github.com/vertex-wp/framework/blob/main/src/' . $encodedPath;
     $testRelativePath = preg_replace('/\.php$/', 'Test.php', $relativePath);
     $testPath = $repositoryRoot . '/tests/' . $testRelativePath;
-    $testUrl = 'https://github.com/ephpicman/Framework/blob/main/tests/' . str_replace('%2F', '/', rawurlencode($testRelativePath));
+    $testUrl = 'https://github.com/vertex-wp/framework/blob/main/tests/' . str_replace('%2F', '/', rawurlencode($testRelativePath));
     $testLink = is_file($testPath) ? '[↗](' . $testUrl . ' "View test")' : '';
 
     $rows[] = sprintf(
