@@ -75,7 +75,7 @@ jobs:
             phpunit: "^11.0"
             wordpress: "6.3"
           - php: "8.5"
-            phpunit: "^13.0"
+            phpunit: "^12.0"
             wordpress: "latest"
     services:
       mysql:
@@ -114,12 +114,13 @@ jobs:
           mkdir -p "$RUNNER_TEMP/phpunit"
           cd "$RUNNER_TEMP/phpunit"
           composer init --no-interaction --name=vertex/framework-integration-test-tools
-          composer require --no-interaction --no-progress --prefer-dist "phpunit/phpunit:${{ matrix.phpunit }}"
+          composer require --no-interaction --no-progress --prefer-dist "phpunit/phpunit:${{ matrix.phpunit }}" "yoast/phpunit-polyfills:^4.0"
           echo "$RUNNER_TEMP/phpunit/vendor/bin" >> "$GITHUB_PATH"
 
       - name: Run WordPress integration tests
         env:
           WP_TESTS_DIR: /tmp/wordpress-tests-lib
+          WP_TESTS_PHPUNIT_POLYFILLS_PATH: ${{ runner.temp }}/phpunit/vendor/yoast/phpunit-polyfills
         run: phpunit --configuration phpunit.integration.xml
 
   coverage:
