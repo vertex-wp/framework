@@ -28,7 +28,7 @@ example-plugin/
 
 ## Bootstrap
 
-Require the framework bootstrap file from the main plugin or theme file, then register the product root, product namespace and version:
+Require the framework bootstrap file from the main plugin or theme file, then register the product root, product namespace and the version of the bundled Vertex framework:
 
 ```php
 require_once __DIR__ . '/vertex/bootstrap.php';
@@ -40,7 +40,7 @@ VertexLoader::register(
 );
 ```
 
-The loader resolves the `vertex/` and `src/` directories relative to the product root. Register products during normal plugin loading, before WordPress fires `after_setup_theme`.
+The loader resolves the `vertex/` and `src/` directories relative to the product root. The third argument is the bundled Vertex framework version, not the product version. When multiple products load separate framework copies in the same request, the loader selects the copy with the highest framework version. Register products during normal plugin loading, before WordPress fires `after_setup_theme`.
 
 A product entry point can then register its application with the framework:
 
@@ -106,7 +106,7 @@ Builders support constructor hydration through `make(array $queryArray)`, fluent
 
 `VertexLoader` registers the `Vertex\` namespace against `vertex/src/` and each product namespace against its `src/` directory. Framework class files must follow PSR-4-style namespace-to-directory mapping.
 
-The loader selects the highest registered framework version when multiple products load separate copies of Vertex in the same request.
+The loader compares the explicitly registered bundled framework versions and selects the highest one when multiple products load separate copies of Vertex in the same request.
 
 ## Development
 

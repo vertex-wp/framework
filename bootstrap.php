@@ -7,14 +7,14 @@ defined('ABSPATH') || exit;
 if (!class_exists('VertexLoader', false)) {
     final class VertexLoader
     {
-        /** @var array<string, array{version: string, path: string}> */
+        /** @var array<string, array{framework_version: string, path: string}> */
         private static array $availableFrameworkInstances = [];
         /** @var array<string, string> */
         private static array $products = [];
         private static bool $isFinalizationHookRegistered = false;
         private static bool $initialized = false;
 
-        public static function register(string $pluginPath, string $pluginNamespace, string $pluginVersion): void
+        public static function register(string $pluginPath, string $pluginNamespace, string $frameworkVersion): void
         {
             if (self::$initialized)
                 return;
@@ -35,13 +35,13 @@ if (!class_exists('VertexLoader', false)) {
             if (
                 !is_dir("{$frameworkPath}/src") ||
                 !is_dir($productPath) ||
-                !preg_match('/^\d+\.\d+\.\d+(?:-[0-9A-Za-z.-]+)?(?:\+[0-9A-Za-z.-]+)?$/', $pluginVersion)
+                !preg_match('/^\d+\.\d+\.\d+(?:-[0-9A-Za-z.-]+)?(?:\+[0-9A-Za-z.-]+)?$/', $frameworkVersion)
             ) {
                 return;
             }
 
             self::$availableFrameworkInstances[$frameworkPath] = [
-                'version' => $pluginVersion,
+                'framework_version' => $frameworkVersion,
                 'path' => $frameworkPath,
             ];
 
@@ -64,7 +64,7 @@ if (!class_exists('VertexLoader', false)) {
 
             usort(
                 $availableFrameworkInstances,
-                static fn(array $a, array $b): int => version_compare($b['version'], $a['version'])
+                static fn(array $a, array $b): int => version_compare($b['framework_version'], $a['framework_version'])
             );
 
             $selected = $availableFrameworkInstances[0];
