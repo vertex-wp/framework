@@ -14,7 +14,7 @@ if (!is_dir($sourceDirectory)) {
 
 spl_autoload_register(
     static function (string $class) use ($sourceDirectory): void {
-        $prefix = 'EphpicMan\\Framework\\';
+        $prefix = 'Vertex\\';
 
         if (0 !== strpos($class, $prefix)) {
             return;

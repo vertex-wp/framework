@@ -2,10 +2,10 @@
 
 declare(strict_types=1);
 
-namespace EphpicMan\Framework\WordPress;
+namespace Vertex\WordPress;
 
-use EphpicMan\Framework\Utils\ArrayUtil;
-use EphpicMan\Framework\Utils\NumberUtil;
+use Vertex\Utils\ArrayUtil;
+use Vertex\Utils\NumberUtil;
 
 \defined('ABSPATH') || exit;
 

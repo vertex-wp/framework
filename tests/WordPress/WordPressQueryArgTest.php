@@ -2,20 +2,20 @@
 
 declare(strict_types=1);
 
-use EphpicMan\Framework\WordPress\CommentQueryArg;
-use EphpicMan\Framework\WordPress\DateQueryArg;
-use EphpicMan\Framework\WordPress\IncludeExcludeIsQueryArg;
-use EphpicMan\Framework\WordPress\IncludeExcludeQueryArg;
-use EphpicMan\Framework\WordPress\IncludeQueryArg;
-use EphpicMan\Framework\WordPress\MetaQueryArg;
-use EphpicMan\Framework\WordPress\NetworkQueryArg;
-use EphpicMan\Framework\WordPress\PostQueryArg;
-use EphpicMan\Framework\WordPress\QueryArg;
-use EphpicMan\Framework\WordPress\SearchQueryArg;
-use EphpicMan\Framework\WordPress\SiteQueryArg;
-use EphpicMan\Framework\WordPress\TaxQueryArg;
-use EphpicMan\Framework\WordPress\TermQueryArg;
-use EphpicMan\Framework\WordPress\UserQueryArg;
+use Vertex\WordPress\CommentQueryArg;
+use Vertex\WordPress\DateQueryArg;
+use Vertex\WordPress\IncludeExcludeIsQueryArg;
+use Vertex\WordPress\IncludeExcludeQueryArg;
+use Vertex\WordPress\IncludeQueryArg;
+use Vertex\WordPress\MetaQueryArg;
+use Vertex\WordPress\NetworkQueryArg;
+use Vertex\WordPress\PostQueryArg;
+use Vertex\WordPress\QueryArg;
+use Vertex\WordPress\SearchQueryArg;
+use Vertex\WordPress\SiteQueryArg;
+use Vertex\WordPress\TaxQueryArg;
+use Vertex\WordPress\TermQueryArg;
+use Vertex\WordPress\UserQueryArg;
 use PHPUnit\Framework\TestCase;
 
 final class WordPressQueryArgTest extends TestCase
