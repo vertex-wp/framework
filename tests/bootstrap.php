@@ -8,7 +8,6 @@
  * @license   See the LICENSE file in the project root.
  */
 
-
 declare(strict_types=1);
 
 defined('ABSPATH') || define('ABSPATH', dirname(__DIR__) . '/');

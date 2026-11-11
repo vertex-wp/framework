@@ -8,7 +8,6 @@
  * @license   See the LICENSE file in the project root.
  */
 
-
 declare(strict_types=1);
 
 namespace Vertex\Utils;
