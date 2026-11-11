@@ -1,13 +1,18 @@
 name: Vertex Unit Tests
 
 on:
+  push:
+    branches:
+      - develop
   pull_request:
     branches:
       - main
+      - develop
     types:
       - opened
       - synchronize
       - reopened
+  workflow_dispatch:
 
 permissions:
   contents: read
@@ -37,7 +42,7 @@ jobs:
           - php: "8.5"
             phpunit: "13"
     steps:
-      - name: Check out Framework
+      - name: Check out Vertex
         uses: actions/checkout@v4
 
       - name: Set up PHP
@@ -58,7 +63,7 @@ jobs:
     runs-on: ubuntu-latest
     if: always() && needs.tests.result == 'success'
     steps:
-      - name: Check out Framework
+      - name: Check out Vertex
         uses: actions/checkout@v4
 
       - name: Set up PHP with Xdebug
