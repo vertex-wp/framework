@@ -35,7 +35,7 @@ require_once __DIR__ . '/vertex/bootstrap.php';
 
 VertexLoader::register(
     __DIR__,
-    'ExamplePlugin\\',
+    'ExamplePlugin\',
     '1.4.0',
 );
 ```
@@ -107,6 +107,16 @@ Builders support constructor hydration through `make(array $queryArray)`, fluent
 `VertexLoader` registers the `Vertex\` namespace against `vertex/src/` and each product namespace against its `src/` directory. Framework class files must follow PSR-4-style namespace-to-directory mapping.
 
 The loader compares the explicitly registered bundled framework versions and selects the highest one when multiple products load separate copies of Vertex in the same request.
+
+## Project Policies
+
+- [Code of Conduct](CODE_OF_CONDUCT.md)
+- [Contributing](CONTRIBUTING.md)
+- [Governance](GOVERNANCE.md)
+- [Accessibility](ACCESSIBILITY.md)
+- [Security Policy](SECURITY.md)
+- [Support](SUPPORT.md)
+- [Changelog](CHANGELOG.md)
 
 ## Development
 

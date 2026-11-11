@@ -1,0 +1,27 @@
+title: "Idea: "
+body:
+  - type: markdown
+    attributes:
+      value: |
+        Use this category to discuss ideas and possible improvements before opening a formal feature request.
+  - type: textarea
+    id: problem
+    attributes:
+      label: Problem or opportunity
+      description: What problem would this idea solve?
+    validations:
+      required: true
+  - type: textarea
+    id: proposal
+    attributes:
+      label: Proposed approach
+      description: Describe the idea and how it might work.
+    validations:
+      required: true
+  - type: textarea
+    id: alternatives
+    attributes:
+      label: Alternatives considered
+      description: Describe any alternatives or trade-offs.
+    validations:
+      required: false
