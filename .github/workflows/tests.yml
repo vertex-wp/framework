@@ -57,7 +57,7 @@ jobs:
         run: |
           mkdir -p "$RUNNER_TEMP/phpunit"
           cd "$RUNNER_TEMP/phpunit"
-          composer require --no-interaction --no-progress --prefer-dist "phpunit/phpunit:^\${{ matrix.phpunit }}.0"
+          composer require --no-interaction --no-progress --prefer-dist "phpunit/phpunit:^${{ matrix.phpunit }}.0"
           echo "$RUNNER_TEMP/phpunit/vendor/bin" >> "$GITHUB_PATH"
 
       - name: Run unit tests
