@@ -101,9 +101,7 @@ jobs:
           coverage: none
 
       - name: Prepare WordPress test database
-        run: |
-          mysql --host=127.0.0.1 --user=root --password=root \\
-            --execute='DROP DATABASE IF EXISTS wordpress_test;'
+        run: mysql --host=127.0.0.1 --user=root --password=root --execute='DROP DATABASE IF EXISTS wordpress_test;'
 
       - name: Install WordPress test suite
         run: |
