@@ -77,7 +77,7 @@ if (!class_exists('VertexLoader', false)) {
 
             spl_autoload_register(
                 static function (string $class) use ($frameworkSourcePath): void {
-                    self::autoloadClass($class, ['Vertex\\Framework\\' => $frameworkSourcePath]);
+                    self::autoloadClass($class, ['Vertex\\' => $frameworkSourcePath]);
                 }
             );
 
