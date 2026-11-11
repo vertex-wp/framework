@@ -71,11 +71,12 @@ jobs:
       fail-fast: false
       matrix:
         include:
+          # WordPress's test suite currently relies on PHPUnit 9 APIs.
           - php: "8.2"
-            phpunit: "^11.0"
+            phpunit: "^9.6"
             wordpress: "6.3"
-          - php: "8.5"
-            phpunit: "^12.0"
+          - php: "8.2"
+            phpunit: "^9.6"
             wordpress: "latest"
     services:
       mysql:
