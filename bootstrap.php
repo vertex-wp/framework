@@ -123,7 +123,7 @@ if (!class_exists('VertexLoader', false)) {
  *
  * VertexLoader::register(
  *     __DIR__,
- *     'ExamplePlugin\\\\',
+ *     'ExamplePlugin\\',
  *     '1.4.0',
  * );
  */
