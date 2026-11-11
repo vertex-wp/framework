@@ -6,7 +6,7 @@
     failOnWarning="true"
 >
     <testsuites>
-        <testsuite name="Framework Unit Tests">
+        <testsuite name="Vertex Unit Tests">
             <directory>tests</directory>
         </testsuite>
     </testsuites>
