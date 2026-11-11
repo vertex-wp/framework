@@ -65,9 +65,9 @@ All framework classes use the `Vertex` root namespace. Sub-namespaces mirror the
 Examples:
 
 ```php
-use Vertex\Utils\\ArrayUtil;
-use Vertex\Utils\\NumberUtil;
-use Vertex\WordPress\\PostQueryArg;
+use Vertex\Utils\ArrayUtil;
+use Vertex\Utils\NumberUtil;
+use Vertex\WordPress\PostQueryArg;
 
 $ids = ArrayUtil::normalizeUniqueStrings(['one', '', 'one', 'two']);
 $id = NumberUtil::absint('-42');
