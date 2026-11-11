@@ -1,4 +1,4 @@
-name: Vertex Unit Tests
+name: Vertex Tests
 
 on:
   push:
@@ -63,6 +63,66 @@ jobs:
 
       - name: Run unit tests
         run: phpunit --configuration phpunit.xml
+
+  integration:
+    name: WordPress ${{ matrix.wordpress }} / PHP ${{ matrix.php }} / PHPUnit ${{ matrix.phpunit }}
+    runs-on: ubuntu-latest
+    strategy:
+      fail-fast: false
+      matrix:
+        include:
+          # WordPress's test suite currently relies on PHPUnit 9 APIs.
+          - php: "8.2"
+            phpunit: "^9.6"
+            wordpress: "6.3"
+          - php: "8.2"
+            phpunit: "^9.6"
+            wordpress: "latest"
+    services:
+      mysql:
+        image: mysql:8.0
+        env:
+          MYSQL_ROOT_PASSWORD: root
+          MYSQL_DATABASE: wordpress_test
+        ports:
+          - 3306:3306
+        options: >-
+          --health-cmd="mysqladmin ping -h 127.0.0.1 -proot"
+          --health-interval=10s
+          --health-timeout=5s
+          --health-retries=10
+    steps:
+      - name: Check out Vertex
+        uses: actions/checkout@v7
+
+      - name: Set up PHP
+        uses: shivammathur/setup-php@eb7c497e18156a6bbabfef1d3a82760b9eda3962
+        with:
+          php-version: ${{ matrix.php }}
+          coverage: none
+
+      - name: Prepare WordPress test database
+        run: mysql --host=127.0.0.1 --user=root --password=root --execute='DROP DATABASE IF EXISTS wordpress_test;'
+
+      - name: Install WordPress test suite
+        run: |
+          curl -fsSL https://raw.githubusercontent.com/wp-cli/scaffold-command/main/templates/install-wp-tests.sh \
+            -o "$RUNNER_TEMP/install-wp-tests.sh"
+          bash "$RUNNER_TEMP/install-wp-tests.sh" wordpress_test root root 127.0.0.1 "${{ matrix.wordpress }}"
+
+      - name: Install compatible PHPUnit
+        run: |
+          mkdir -p "$RUNNER_TEMP/phpunit"
+          cd "$RUNNER_TEMP/phpunit"
+          composer init --no-interaction --name=vertex/framework-integration-test-tools
+          composer require --no-interaction --no-progress --prefer-dist "phpunit/phpunit:${{ matrix.phpunit }}" "yoast/phpunit-polyfills:^4.0"
+          echo "$RUNNER_TEMP/phpunit/vendor/bin" >> "$GITHUB_PATH"
+
+      - name: Run WordPress integration tests
+        env:
+          WP_TESTS_DIR: /tmp/wordpress-tests-lib
+          WP_TESTS_PHPUNIT_POLYFILLS_PATH: ${{ runner.temp }}/phpunit/vendor/yoast/phpunit-polyfills
+        run: phpunit --configuration phpunit.integration.xml
 
   coverage:
     name: Generate coverage report

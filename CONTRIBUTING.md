@@ -34,7 +34,8 @@ The PHPUnit version must be compatible with the PHP version being used. The GitH
 
 ## Tests
 
-- Add or update tests for behavioural changes and bug fixes.
+- Add or update unit tests for isolated behaviour and bug fixes.
+- Add WordPress integration tests when behaviour depends on WordPress APIs or query execution.
 - Run the relevant tests before submitting a pull request.
 - Do not remove or weaken existing tests merely to make a change pass.
 - If a change cannot be tested automatically, explain why and describe the manual verification performed.
