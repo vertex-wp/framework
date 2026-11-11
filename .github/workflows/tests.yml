@@ -53,11 +53,16 @@ jobs:
           php-version: ${{ matrix.php }}
           coverage: none
 
-      - name: Download compatible PHPUnit
-        run: curl --fail --location --silent --show-error https://phar.phpunit.de/phpunit-${{ matrix.phpunit }}.phar --output phpunit.phar
+      - name: Install compatible PHPUnit
+        run: |
+          mkdir -p "$RUNNER_TEMP/phpunit"
+          cd "$RUNNER_TEMP/phpunit"
+          composer init --no-interaction --name=vertex/framework-test-tools
+          composer require --no-interaction --no-progress --prefer-dist "phpunit/phpunit:^${{ matrix.phpunit }}.0"
+          echo "$RUNNER_TEMP/phpunit/vendor/bin" >> "$GITHUB_PATH"
 
       - name: Run unit tests
-        run: php phpunit.phar --configuration phpunit.xml
+        run: phpunit --configuration phpunit.xml
 
   coverage:
     name: Generate coverage report
