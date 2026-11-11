@@ -120,10 +120,16 @@ The loader compares the explicitly registered bundled framework versions and sel
 
 ## Development
 
-Run the PHPUnit suite with:
+Run the unit suite with:
 
 ```bash
 php phpunit.phar --configuration phpunit.xml
 ```
 
-The GitHub Actions test workflow runs the supported PHP and PHPUnit matrix on pull requests targeting `main` and pushes to `main`. The coverage job enforces the configured line and branch coverage thresholds and publishes its report in the workflow summary.
+The integration suite uses the official WordPress PHPUnit test library and a configured test database. Install the WordPress test library, set `WP_TESTS_DIR` to its directory, then run:
+
+```bash
+php phpunit.phar --configuration phpunit.integration.xml
+```
+
+The GitHub Actions workflow runs the unit suite across the supported PHP and PHPUnit matrix. It also runs WordPress integration tests against the minimum supported WordPress version and the latest release on representative PHP versions. The coverage job publishes its report in the workflow summary.

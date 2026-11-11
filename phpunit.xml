@@ -7,7 +7,8 @@
 >
     <testsuites>
         <testsuite name="Vertex Unit Tests">
-            <directory>tests</directory>
+            <directory>tests/Utils</directory>
+            <directory>tests/WordPress</directory>
         </testsuite>
     </testsuites>
     <coverage
