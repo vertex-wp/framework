@@ -29,7 +29,7 @@ if (!class_exists('EphpicManLoader', false)) {
             if (false === $pluginPath)
                 return;
 
-            $frameworkPath = "{$pluginPath}/epm";
+            $frameworkPath = "{$pluginPath}/vertex";
             $productPath = "{$pluginPath}/src";
 
             if (
@@ -116,14 +116,14 @@ if (!class_exists('EphpicManLoader', false)) {
 /*
  * Register the loader from the product's main plugin file, not here.
  *
- * The product must keep its directories named /epm and /src.
+ * The product must keep its directories named /vertex and /src.
  * Pass only the product root path; the loader resolves both directories internally.
  *
  * Example (in the main plugin file):
  *
  * EphpicManLoader::register(
  *     __DIR__,
- *     'EphpicMan\\MyPlugin\\',
+ *     'ExamplePlugin\\\\',
  *     '1.4.0',
  * );
  */
